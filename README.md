@@ -86,3 +86,38 @@ repo init -u https://android.googlesource.com/kernel/manifest -b android-msm-cro
 由于当编译生成的内核烧入手机由于ko文件签名不对、ko文件版本号(version magic)和内核不匹配、内核编译开启了CONFIG_MODVERSIONS选项会导致生成的内核镜像在手机中运行时候导致ko文件加载不成功，所以要进行以下操作
 ### 1、关闭内核编译选项模块签名和模块对内核函数符号crc检验选项
 修改b1c1_defconfig文件，具体如下(左边是修改后的)
+![image](https://github.com/shallin123/Android9.0-pixel-3/blob/master/1.png)
+
+另外修改了b1c1_defconfig后，对build/build.sh编译脚本做如下修改，不然编译会报错。
+![image](https://github.com/shallin123/Android9.0-pixel-3/blob/master/2.png)
+### 2、 关闭内核版本检测（versionmagic）检测
+修改内核源码目录下的kernel/module.c,如下：
+![image](https://github.com/shallin123/Android9.0-pixel-3/blob/master/3.png)
+## 五、内核编译
+
+```
+build/build.sh
+```
+
+## 六、内核烧入
+
+1、将内核源码out/android-msm-crosshatch-4.9/dist目录下的Image.lz4-dtb拷贝到Android9系统源码的
+
+device/google/crosshatch-kernel目录下
+
+2、编译系统源码生成boot.image在系统目录下执行以下命令（执行前先make clean，清除之前编译的内容）
+
+```
+source build/envsetup.sh
+lunch aosp_blueline-userdebug
+make bootimage
+```
+
+## 七、检测内核是否烧入成功
+
+打开adb shell输入`cat  /proc/version`
+
+![image](https://github.com/shallin123/Android9.0-pixel-3/blob/master/4.png)
+
+结果如上图，其中显示的用户名为自己计算机的用户名。
+
