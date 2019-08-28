@@ -112,7 +112,11 @@ source build/envsetup.sh
 lunch aosp_blueline-userdebug
 make bootimage
 ```
-
+3、将生成的boot.image加载进内核
+```
+cd /android9.0.0_r21/out/target/product/blueline
+fastboot flash boot boot.img`
+```
 ## 七、检测内核是否烧入成功
 
 打开adb shell输入`cat  /proc/version`
