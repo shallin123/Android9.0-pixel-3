@@ -43,7 +43,7 @@ repo sync
 
 > （1）如果执行该命令的过程中,如果提示无法连接到 gerrit.googlesource.com，
 >
-> 那么我们只需要编辑 ~/bin/repo文件，找到REPO_URL这一行,然后将其内容修改为: `REPO_URL = 'https://gerrit-google.tuna.tsinghua.edu.cn/git-repo'`
+> 那么我们只需要编辑 ~/bin/repo文件，找到REPO_URL这一行,然后将其内容修改为: `REPO_URL = 'https://aosp.tuna.tsinghua.edu.cn/git-repo'`
 >
 > （2）repo sync出现“fatal: '../platform/abi/cpp.git' does not appear to be a git repository”的解决方案
 >
