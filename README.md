@@ -78,7 +78,7 @@ c、烧入编译生成的所有镜像
 ## 三、内核的下载
 
 ```
-repo init -u https://https://aosp.tuna.tsinghua.edu.cn/kernel/manifest -b android-msm-crosshatch-4.9-pie-qpr2
+repo init -u https://aosp.tuna.tsinghua.edu.cn/kernel/manifest -b android-msm-crosshatch-4.9-pie-qpr2
 ```
 
 ## 四、内核源码的修改
